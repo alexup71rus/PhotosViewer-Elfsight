@@ -10,7 +10,7 @@
     {
       "id": 2,
       "cover": "",
-      "name": "Girls",
+      "name": "Food",
       "count": 2,
       "uid": 2
     }
@@ -23,7 +23,7 @@
     },
     {
       "id": 2,
-      "url": "",
+      "url": "photo-1567845531350-79f5c0464b96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80",
       "album_id": 2
     },
     {
@@ -41,5 +41,8 @@
       "id": 2,
       "name": "Igor"
     }
-  ]
+  ],
+  "settings": {
+    "vendor": "https://images.unsplash.com/"
+  }
 }
