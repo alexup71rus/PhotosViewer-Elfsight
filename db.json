@@ -1,0 +1,33 @@
+{
+  "albums": [
+    {
+      "cover": "",
+      "name": "Summer 2019",
+      "count": ""
+    },
+    {
+      "cover": "",
+      "name": "My cat Pinguin",
+      "count": ""
+    }
+  ],
+  "photos": [
+    {
+      "id": 1,
+      "url": "Post 1"
+    },
+    {
+      "id": 2,
+      "url": "Post 2"
+    },
+    {
+      "id": 3,
+      "url": "Post 3"
+    }
+  ],
+  "users": [
+    {
+      
+    }
+  ]
+}
