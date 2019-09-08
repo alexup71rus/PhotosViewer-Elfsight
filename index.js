@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Hello from './Hello';
+import { User } from './components/User';
 import './style.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: 'React'
+      name: 'Alex'
     };
   }
 
   render() {
     return (
       <div>
-        <Hello name={this.state.name} />
+        <User name={this.state.name} />
         <p>
-          Start editing to see some magic happen :)
+          ...
         </p>
       </div>
     );
