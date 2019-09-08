@@ -1,33 +1,40 @@
 {
   "albums": [
     {
+      "id": 1,
       "cover": "",
       "name": "Summer 2019",
-      "count": ""
+      "count": 1
     },
     {
+      "id": 2,
+      "uid": 2,
       "cover": "",
-      "name": "My cat Pinguin",
-      "count": ""
+      "name": "Girls",
+      "count": 3
     }
   ],
   "photos": [
     {
       "id": 1,
-      "url": "Post 1"
+      "url": "",
+      "album_id": 1
     },
     {
       "id": 2,
-      "url": "Post 2"
+      "url": "",
+      "album_id": 1
     },
     {
       "id": 3,
-      "url": "Post 3"
+      "url": "",
+      "album_id": 1
     }
   ],
   "users": [
     {
-      
+      "id": 1,
+      "name": "Alexander"
     }
   ]
 }
