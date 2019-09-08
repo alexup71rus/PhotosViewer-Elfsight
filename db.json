@@ -2,14 +2,14 @@
   "albums": [
     {
       "id": 1,
-      "cover": "",
+      "cover_image_id": 1,
       "name": "Summer 2019",
       "count": 1,
       "uid": 1
     },
     {
       "id": 2,
-      "cover": "",
+      "cover_image_id": 2,
       "name": "Food",
       "count": 2,
       "uid": 2
@@ -18,17 +18,26 @@
   "photos": [
     {
       "id": 1,
-      "url": "",
+      "url": "photo-1567819475065-667be7d607fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "uid": 1,
       "album_id": 1
     },
     {
       "id": 2,
       "url": "photo-1567845531350-79f5c0464b96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80",
+      "uid": 1,
       "album_id": 2
     },
     {
       "id": 3,
-      "url": "",
+      "url": "photo-1567845531350-79f5c0464b96?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80",
+      "uid": 2,
+      "album_id": 2
+    },
+    {
+      "id": 4,
+      "url": "photo-1567850174661-3d72900685d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80",
+      "uid": 2,
       "album_id": 2
     }
   ],
