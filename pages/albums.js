@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// import { Albums } from '../components/Albums';
-import { getUsers, getAlbums } from '../apis';
+import { Albums } from '../components/Albums';
+import { getUsers, getAlbums, getPhotos } from '../apis';
 import { addUsersAction } from '../actions';
 
 export class AlbumsPage extends Component {
@@ -15,8 +15,8 @@ export class AlbumsPage extends Component {
     }
 
     if (props.globalState.users.length === 0) {
-      getAlbums(5).then(albums => {
-        this.state.albums = albums;
+      getAlbums().then(albums => {
+        this.setState({albums: albums});
       });
     }
   }
@@ -28,6 +28,7 @@ export class AlbumsPage extends Component {
         <h1>Albums by {
           this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1].name : "..."
         }</h1>
+        <Albums albums={this.state.albums} />
       </div>
     );
   }
