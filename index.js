@@ -1,26 +1,12 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { User } from './components/User';
-import './style.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { reducers } from './reducers/index';
+import { App } from './pages/index';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'Alex'
-    };
-  }
+const store = createStore(reducers, { user_info: {}, popup_image: { id: -1, image: {} } });
 
-  render() {
-    return (
-      <div>
-        <User name={this.state.name} />
-        <p>
-          ...
-        </p>
-      </div>
-    );
-  }
-}
 
-render(<App />, document.getElementById('root'));
+render(<Provider store={store}><Router><Route exact path="*" render={ (ev)=><App routeLocation={ev} /> } /></Router></Provider>, document.getElementById('root'));
