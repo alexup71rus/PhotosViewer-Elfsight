@@ -4,6 +4,7 @@ import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import { UsersPage } from './users';
 import { AlbumsPage } from './albums';
+import { AlbumPage } from './album';
 import { getUsers } from '../apis';
 import './style.css';
 import { addUsersAction } from '../actions';
@@ -29,7 +30,8 @@ export class App extends Component {
     return (
       <div>
         <Route exact path='/' render={ ev => <UsersPage globalState={this.props.globalState} /> } />
-        <Route path='/id*' render={ ev => <AlbumsPage routes={ev} /> } />
+        <Route path='/id*' render={ ev => <AlbumsPage globalState={this.props.globalState} routes={ev} /> } />
+        <Route path='/album*' render={ ev => <AlbumPage globalState={this.props.globalState} routes={ev} /> } />
       </div>
     );
   }
