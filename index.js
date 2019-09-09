@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { reducers } from './reducers/index';
 import { App } from './pages/index';
 
-const store = createStore(reducers, { user_info: {}, popup_image: { id: -1, image: {} } });
+const store = createStore(reducers, { users: [], images: [] });
 
 
 render(<Provider store={store}><Router><Route exact path="*" render={ (ev)=><App routeLocation={ev} /> } /></Router></Provider>, document.getElementById('root'));
