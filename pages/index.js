@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
-import { UserList } from '../components/UserList';
-import { getUsers } from '../apis';
+import { users } from './users';
+import { albums } from './albums';
 import './style.css';
-import { addUsersAction } from '../actions';
 
 export class App extends Component {
   constructor(props) {
     super(props);
-
-    if (props.globalState.users.length === 0) {
-      getUsers(5).then(users => {
-        props.addUsersAction(users);
-      });
-    }
 
     document.onkeyup = document.onkeyup ? document.onkeyup : function (e) {
       if (e.key == "Escape" || e.code == "Escape") {
@@ -27,24 +19,9 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <UserList users={ this.props.globalState.users } />
+        <Route exact path="/" render={ ev => <Users /> } />
+        <Route path="/id*" render={ ev => <Albums /> } />
       </div>
     );
   }
 }
-
-const mapStateToProps = (state) => {
-    return {
-      globalState: state,
-    }
-  }
-  
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addUsersAction: (users) => {
-            dispatch(addUsersAction(users));
-        }
-    }
-}
-  
-App = connect(mapStateToProps, mapDispatchToProps)(App);
