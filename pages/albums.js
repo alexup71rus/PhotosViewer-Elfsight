@@ -25,7 +25,7 @@ export class AlbumsPage extends Component {
     return (
       <div>
         <Link to={`/`}>Назад</Link>
-        <h1>Albums of {
+        <h1>Albums by {
           this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1].name : "..."
         }</h1>
       </div>
