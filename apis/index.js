@@ -1,17 +1,17 @@
 const vendor = "https://my-json-server.typicode.com/";
 
-export const getUsers = (limit) => {
+export const getUsers = () => {
   return fetch(vendor + "alexup71rus/photosviewer-elfsight/users").then(res => res.json());
 }
 
-export const getPhotos = (album, limit) => {
-  return fetch(vendor + "alexup71rus/photosviewer-elfsight/photos?uid=" + album).then(res => res.json());
+export const getPhotos = (album, id) => {
+  return fetch(vendor + "alexup71rus/photosviewer-elfsight/photos?uid=" + album + (id ? '&id=' + id : '')).then(res => res.json());
 }
 
 export const getAllPhotos = (limit) => {
-  return fetch(vendor + "alexup71rus/photosviewer-elfsight/photos").then(res => res.json());
+  return fetch(vendor + "alexup71rus/photosviewer-elfsight/photos" + (limit ? '?_limit=' + limit : '')).then(res => res.json());
 }
 
-export const getAlbums = (limit) => {
+export const getAlbums = () => {
   return fetch(vendor + "alexup71rus/photosviewer-elfsight/albums").then(res => res.json());
 }
