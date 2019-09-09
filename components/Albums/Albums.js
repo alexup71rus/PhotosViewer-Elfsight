@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-export const Albums = ({albums}) => {
-  console.log(albums);
-  return <div>
+export const Albums = ({albums}) => <div>
   {
-    albums.map(album => (<figure key={album.id}>
-      <p><img src='' /></p>
-      <figcaption>{album.name} ({album.count})</figcaption>
-    </figure>))
+    albums.map(album => {
+      return <figure key={album.id}>
+        <p><img src={album.cover} /></p>
+        <figcaption>{album.name} ({album.count})</figcaption>
+      </figure>;
+    })
   }
-</div>
-};
+</div>;
