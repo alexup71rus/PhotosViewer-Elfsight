@@ -6,7 +6,7 @@ import { Users } from '../components/Users';
 import { getUsers } from '../apis';
 import { addUsersAction } from '../actions';
 
-export class Users extends Component {
+export class UsersPage extends Component {
   constructor(props) {
     super(props);
 
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
   
-Users = connect(mapStateToProps, mapDispatchToProps)(Users);
+UsersPage = connect(mapStateToProps, mapDispatchToProps)(UsersPage);

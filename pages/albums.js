@@ -4,9 +4,9 @@ import { connect, Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 // import { Albums } from '../components/Albums';
 // import { getUsers } from '../apis';
-import { addUsersAction } from '../actions';
+// import { addUsersAction } from '../actions';
 
-export class Albums extends Component {
+export class AlbumsPage extends Component {
   constructor(props) {
     super(props);
 
@@ -26,18 +26,18 @@ export class Albums extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-    return {
-      globalState: state,
-    }
-  }
+// const mapStateToProps = (state) => {
+//     return {
+//       globalState: state,
+//     }
+//   }
   
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addUsersAction: (users) => {
-            dispatch(addUsersAction(users));
-        }
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addUsersAction: (users) => {
+//             dispatch(addUsersAction(users));
+//         }
+//     }
+// }
   
-Albums = connect(mapStateToProps, mapDispatchToProps)(Albums);
+// AlbumsPage = connect(mapStateToProps, mapDispatchToProps)(AlbumsPage);
