@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 export const Albums = ({albums}) => {
   console.log(albums);
   return <div>
-  <figure>
-  <p><img src='' /></p>
-    <figcaption>{albums.name}</figcaption>
-  </figure>
+  {
+    albums.map(album => (<figure>
+      <p><img src='' /></p>
+      <figcaption>{album.name} ({album.count})</figcaption>
+    </figure>))
+  }
 </div>
 };
