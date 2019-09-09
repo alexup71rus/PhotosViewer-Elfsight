@@ -14,11 +14,9 @@ export class AlbumsPage extends Component {
       albums: []
     }
 
-    if (props.globalState.users.length === 0) {
-      getAlbums().then(albums => {
-        this.setState({albums: albums});
-      });
-    }
+    getAlbums(this.props.routes.match.params[0]).then(albums => {
+      this.setState({albums: albums});
+    });
   }
 
   render() {

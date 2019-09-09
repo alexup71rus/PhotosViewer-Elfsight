@@ -12,6 +12,6 @@ export const getAllPhotos = (limit) => {
   return fetch(vendor + "alexup71rus/photosviewer-elfsight/photos" + (limit ? '?_limit=' + limit : '')).then(res => res.json());
 }
 
-export const getAlbums = () => {
-  return fetch(vendor + "alexup71rus/photosviewer-elfsight/albums").then(res => res.json());
+export const getAlbums = (uid) => {
+  return fetch(vendor + "alexup71rus/photosviewer-elfsight/albums?uid=" + (uid ? '&uid=' + uid : '')).then(res => res.json());
 }
