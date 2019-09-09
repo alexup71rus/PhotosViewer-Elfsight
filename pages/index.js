@@ -10,7 +10,7 @@ import { addUsersAction } from '../actions';
 export class App extends Component {
   constructor(props) {
     super(props);
-    
+
     if (props.globalState.users.length === 0) {
       getUsers(5).then(users => {
         props.addUsersAction(users);
@@ -25,7 +25,6 @@ export class App extends Component {
   }
 
   render() {
-    console.log(this.props.globalState.users);
     return (
       <div>
         <UserList users={ this.props.globalState.users } />
