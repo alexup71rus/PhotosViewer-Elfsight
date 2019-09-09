@@ -22,12 +22,11 @@ export class AlbumsPage extends Component {
   }
 
   render() {
-    console.log(this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1] : "Anonim");
     return (
       <div>
         <Link to={`/`}>Назад</Link>
         <h1>Albums of {
-          this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1].name : "Anonim"
+          this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1].name : "..."
         }</h1>
       </div>
     );
