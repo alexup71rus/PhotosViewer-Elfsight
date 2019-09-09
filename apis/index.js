@@ -16,6 +16,6 @@ export const getAllPhotos = (query = { limit: 0, page: 0 }) => {
   return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/photos" + (limit ? '?_limit=' + query.limit : '')).then(res => res.json());
 }
 
-export const getAlbums = (uid) => {
-  return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/albums?uid=" + (uid ? '&uid=' + uid : '')).then(res => res.json());
+export const getAlbums = (id, uid) => {
+  return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/albums?id="+ (id ? id : '') + (uid ? '&uid=' + uid : '')).then(res => res.json());
 }

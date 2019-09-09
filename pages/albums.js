@@ -37,7 +37,11 @@ export class AlbumsPage extends Component {
       <div>
         <Link to={`/`}>Назад</Link>
         <h1>Albums by {
-          this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1].name : "..."
+          this.props.globalState.users.map(user => {
+            if (user.id == this.props.routes.match.params[0]) {
+              return user.name;
+            }
+          })
         }</h1>
         <Albums albums={this.state.albums} />
       </div>
