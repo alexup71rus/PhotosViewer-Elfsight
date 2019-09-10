@@ -77,13 +77,12 @@ export class AlbumPage extends Component {
     return (
       <div>
         {
-          this.props.routeLocation.location.search &&
-          this.state.popupImageKey !== null ?
-            <Popup
-              image={this.state.images[this.state.popupImageKey]}
-              routeLocation={this.props.routeLocation}
-              /> :
-            null
+          !!this.props.routeLocation.location.search &&
+          this.state.popupImageKey !== null &&
+          <Popup
+            image={this.state.images[this.state.popupImageKey]}
+            routeLocation={this.props.routeLocation}
+            />
         }
         <Link to={this.state.album.uid ? `/id${this.state.album.uid}` : '/'}>Назад</Link>
         <h1>Album {this.state.album.name}</h1>
