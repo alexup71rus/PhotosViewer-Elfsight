@@ -13,15 +13,16 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
-    if (props.globalState.users.length === 0) {
-      getUsers().then(users => {
-        props.addUsersAction(users);
-      });
-    }
   }
 
   componentDidMount() {
     this._isMounted = true;
+
+    if (this.props.globalState.users.length === 0) {
+      this._isMounted && getUsers().then(users => {
+        this.props.addUsersAction(users);
+      });
+    }
   }
 
   componentWillUnmount() {
