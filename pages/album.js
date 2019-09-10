@@ -63,7 +63,7 @@ export class AlbumPage extends Component {
       this._isMounted && this.setState({album: album[0]});
       this._isMounted && getPhotos(album[0].uid, {album_id: this.state.albumId})
       .then(images => {
-        this.setState({images: images});
+        this._isMounted && this.setState({images: images});
       });
     });
     
