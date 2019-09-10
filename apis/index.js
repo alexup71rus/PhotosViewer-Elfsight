@@ -1,3 +1,4 @@
+// import { axios } from 'axios';
 import { dbVendor } from '../settings';
 
 /**
@@ -18,23 +19,6 @@ export const getPhotos = (uid, query = {
   (query.album_id ? '&album_id=' + query.album_id : '') + 
   (query.limit ? '&_limit=' + query.limit : '') + 
   (query.page ? '&_page=' + query.page : ''))
-  .then(res => res.json());
-}
-
-/**
- * 
- */
-export const getPhoto = (id) => {
-  return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/photos?id=" + id)
-  .then(res => res.json())
-  .then(res => res[0]);
-}
-
-/**
- * 
- */
-export const getAllPhotos = (query = { limit: 0, page: 0 }) => {
-  return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/photos" + (limit ? '?_limit=' + query.limit : ''))
   .then(res => res.json());
 }
 

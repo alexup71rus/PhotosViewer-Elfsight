@@ -13,7 +13,7 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
-    if (this.props.globalState.users.length === 0) {
+    if (props.globalState.users.length === 0) {
       getUsers().then(users => {
         props.addUsersAction(users);
       });
@@ -22,7 +22,6 @@ export class App extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    
   }
 
   componentWillUnmount() {
