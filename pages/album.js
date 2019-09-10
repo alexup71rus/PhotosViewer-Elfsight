@@ -12,6 +12,7 @@ import { Popup } from '../components/Popup';
 export class AlbumPage extends Component {
   constructor(props) {
     super(props);
+    this._isMounted = false;
     const self = this;
     this.state = {
       albumId: this.props.routeLocation.match.params[0],
@@ -63,8 +64,13 @@ export class AlbumPage extends Component {
     }
   }
 
-  componentWillUnmount() {
+  componentDidMount() {
+    this._isMounted = true;
     
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

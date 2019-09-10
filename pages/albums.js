@@ -10,7 +10,7 @@ import { imageVendor } from '../settings';
 export class AlbumsPage extends Component {
   constructor(props) {
     super(props);
-    
+    this._isMounted = false;
     this.state = {
       albums: []
     }
@@ -33,8 +33,13 @@ export class AlbumsPage extends Component {
     }
   }
 
-  componentWillUnmount() {
+  componentDidMount() {
+    this._isMounted = true;
     
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
