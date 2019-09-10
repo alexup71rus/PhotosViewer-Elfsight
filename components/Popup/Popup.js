@@ -5,8 +5,7 @@ import { getPhotos } from '../apis';
 import { imageVendor } from '../../settings';
 
 export const Popup = ({image, routeLocation}) => {
-  image = image[0];
-    return <div className='modal'>
+  return <div className='modal'>
       <button className='close' onClick={ev => routeLocation.history.push('?')}>x</button>
       {
         image ?
