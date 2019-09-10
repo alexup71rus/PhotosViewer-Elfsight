@@ -27,9 +27,8 @@ export const getPhotos = (uid, query = {
  * Получить альбомы пользователя
  * @param id пользователя
  */
-export const getAlbums = (id, uid) => {
-  return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/albums?id=" +
-    (id || '') +
-    (uid ? '&uid=' + uid : ''))
+export const getAlbums = (uid) => {
+  return fetch(dbVendor + "alexup71rus/photosviewer-elfsight/albums?uid=" +
+    (uid || ''))
   .then(res => res.json());
 }
