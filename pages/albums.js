@@ -15,7 +15,7 @@ export class AlbumsPage extends Component {
     }
 
     if (!this.state.albums.length) {
-      getAlbums(this.props.routes.match.params[0]).then(albums => {
+      getAlbums(this.props.routeLocation.match.params[0]).then(albums => {
         this.setState({albums: albums});
         this.state.albums.forEach((album, i) => {
           getPhotos(album.uid, {
@@ -38,7 +38,7 @@ export class AlbumsPage extends Component {
         <Link to={`/`}>Назад</Link>
         <h1>Albums by {
           this.props.globalState.users.map(user => {
-            if (user.id == this.props.routes.match.params[0]) {
+            if (user.id == this.props.routeLocation.match.params[0]) {
               return user.name;
             }
           })

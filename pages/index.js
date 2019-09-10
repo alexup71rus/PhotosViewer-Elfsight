@@ -14,12 +14,6 @@ export class App extends Component {
     super(props);
 
     if (props.globalState.users.length === 0) {
-      document.onkeyup = function (e) {
-        if (e.key == "Escape" || e.code == "Escape") {
-          props.routeLocation.history.push('/');
-        }
-      }
-
       getUsers().then(users => {
         props.addUsersAction(users);
       });
@@ -30,8 +24,8 @@ export class App extends Component {
     return (
       <div>
         <Route exact path='/' render={ ev => <UsersPage globalState={this.props.globalState} /> } />
-        <Route path='/id*' render={ ev => <AlbumsPage globalState={this.props.globalState} routes={ev} /> } />
-        <Route path='/album*' render={ ev => <AlbumPage globalState={this.props.globalState} routes={ev} /> } />
+        <Route path='/id*' render={ ev => <AlbumsPage globalState={this.props.globalState} routeLocation={ev} /> } />
+        <Route path='/album*' render={ ev => <AlbumPage globalState={this.props.globalState} routeLocation={ev} /> } />
       </div>
     );
   }

@@ -4,10 +4,10 @@ import './style.scss';
 import { getPhotos } from '../apis';
 import { imageVendor } from '../../settings';
 
-export const Popup = ({image}) => {
+export const Popup = ({image, routeLocation}) => {
   image = image[0];
     return <div className='modal'>
-      <button className='close'>x</button>
+      <button className='close' onClick={ev => routeLocation.history.push('?')}>x</button>
       {
         image ?
           <img src={imageVendor + image.url} /> :

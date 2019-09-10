@@ -12,8 +12,9 @@ import { Popup } from '../components/Popup';
 export class AlbumPage extends Component {
   constructor(props) {
     super(props);
+    const self = this;
     this.state = {
-      albumId: this.props.routes.match.params[0],
+      albumId: this.props.routeLocation.match.params[0],
       album: {},
       popupImage: 0,
       images: []
@@ -27,11 +28,17 @@ export class AlbumPage extends Component {
         this.setState({images: images});
       });
     });
+
+    document.onkeyup = function (e) {
+      if (e.key == "Escape" || e.code == "Escape") {
+        self.props.routeLocation.history.push('?');
+      }
+    }
   }
 
   componentDidUpdate() {
-    if (this.props.routes.location.search) {
-      const chunk = this.props.routes.location.search.match(/\image=(\d)/);
+    if (this.props.routeLocation.location.search) {
+      const chunk = this.props.routeLocation.location.search.match(/\image=(\d)/);
       if (this.state.popupImage === 0 && chunk[0] && chunk[1] > 0) {
         this.setState({popupImage: chunk[1]});
       } else if (!chunk && this.state.popupImage !== 0) {
@@ -44,12 +51,15 @@ export class AlbumPage extends Component {
     return (
       <div>
         {
-          this.props.routes.location.search && this.state.popupImage > 0 ?
-            <Popup image={this.state.images.filter(image => {
-              if (image.id === +this.state.popupImage) {
-                return image;
-              }
-            })} /> :
+          this.props.routeLocation.location.search && this.state.popupImage > 0 ?
+            <Popup
+              image={this.state.images.filter(image => {
+                if (image.id === +this.state.popupImage) {
+                  return image;
+                }
+              })}
+              routeLocation={this.props.routeLocation}
+              /> :
             null
         }
         <Link to={this.state.album.uid ? `/id${this.state.album.uid}` : '/'}>Назад</Link>
