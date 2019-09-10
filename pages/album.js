@@ -25,14 +25,16 @@ export class AlbumPage extends Component {
     document.onkeyup = function (e) {
       if (e.key == "Escape" || e.code == "Escape") {
         self.props.routeLocation.history.push('?');
-      } else if (e.key === 'ArrowRight' &&
-        e.code === 'ArrowRight' &&
-        self.state.images[self.state.popupImageKey+1]) {
-          self.props.routeLocation.history.push(`?image=${self.state.images[self.state.popupImageKey+1].id}`);
-      } else if (e.key === 'ArrowLeft' &&
-        e.code === 'ArrowLeft' &&
-        self.state.images[self.state.popupImageKey-1]) {
-          self.props.routeLocation.history.push(`?image=${self.state.images[self.state.popupImageKey-1].id}`);
+      } else if (self.props.routeLocation.location.search) {
+        if (e.key === 'ArrowRight' &&
+          e.code === 'ArrowRight' &&
+          self.state.images[self.state.popupImageKey+1]) {
+            self.props.routeLocation.history.push(`?image=${self.state.images[self.state.popupImageKey+1].id}`);
+        } else if (e.key === 'ArrowLeft' &&
+          e.code === 'ArrowLeft' &&
+          self.state.images[self.state.popupImageKey-1]) {
+            self.props.routeLocation.history.push(`?image=${self.state.images[self.state.popupImageKey-1].id}`);
+        }
       }
     }
   }
