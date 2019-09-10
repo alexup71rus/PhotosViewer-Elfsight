@@ -27,7 +27,7 @@ export class AlbumsPage extends Component {
             limit: 1,
             page: album.count
           }).then(image => {
-            this.setState(prevState => {
+            this._isMounted && this.setState(prevState => {
               prevState.albums[i].cover = imageVendor + image[0].url;
               return prevState;
             });
