@@ -22,15 +22,6 @@ export class AlbumPage extends Component {
       images: []
     }
 
-    getAlbums(this.state.albumId)
-    .then(album => {
-      this.setState({album: album[0]});
-      getPhotos(album[0].uid, {album_id: this.state.albumId})
-      .then(images => {
-        this.setState({images: images});
-      });
-    });
-
     document.onkeyup = function (e) {
       if (e.key == "Escape" || e.code == "Escape") {
         self.props.routeLocation.history.push('?');
@@ -66,6 +57,15 @@ export class AlbumPage extends Component {
 
   componentDidMount() {
     this._isMounted = true;
+
+    this._isMounted && getAlbums(this.state.albumId)
+    .then(album => {
+      this._isMounted && this.setState({album: album[0]});
+      this._isMounted && getPhotos(album[0].uid, {album_id: this.state.albumId})
+      .then(images => {
+        this.setState({images: images});
+      });
+    });
     
   }
 
