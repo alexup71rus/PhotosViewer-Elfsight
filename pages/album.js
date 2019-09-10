@@ -5,11 +5,9 @@ import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Albums } from '../components/Albums';
 import { getPhoto, getAlbums, getPhotos } from '../apis';
-import { imageVendor } from '../settings';
 import { getUsers } from '../apis';
 import { ImageBlock } from '../components/ImageBlock';
 import { Popup } from '../components/Popup';
-import { imageVendor } from '../settings';
 
 export class AlbumPage extends Component {
   constructor(props) {
@@ -17,7 +15,7 @@ export class AlbumPage extends Component {
     this.state = {
       albumId: this.props.routes.match.params[0],
       album: {},
-      popupImage: {},
+      popupImage: 0,
       images: []
     }
 
@@ -34,12 +32,10 @@ export class AlbumPage extends Component {
   componentDidUpdate() {
     if (this.props.routes.location.search) {
       const chunk = this.props.routes.location.search.match(/\image=(\d)/);
-      if (chunk[0] && chunk[1] > 0) {
-        getPhoto(chunk[1])
-        .then(image => {
-          image.url = imageVendor + image.url;
-          this.setState({popupImage: image});
-        });
+      if (this.state.popupImage === 0 && chunk[0] && chunk[1] > 0) {
+        this.setState({popupImage: chunk[1]});
+      } else if (!chunk && this.state.popupImage !== 0) {
+        this.setState({popupImage: 0});
       }
     }
   }
@@ -48,7 +44,13 @@ export class AlbumPage extends Component {
     return (
       <div>
         {
-          this.props.routes.location.search ? <Popup image={this.state.popupImage} /> : null
+          this.props.routes.location.search && this.state.popupImage > 0 ?
+            <Popup image={this.state.images.filter(image => {
+              if (image.id === +this.state.popupImage) {
+                return image;
+              }
+            })} /> :
+            null
         }
         <Link to={this.state.album.uid ? `/id${this.state.album.uid}` : '/'}>Назад</Link>
         <ImageBlock images={this.state.images} />
