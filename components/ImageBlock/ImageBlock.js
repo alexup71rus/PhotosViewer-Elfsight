@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import './style.scss';
 import { imageVendor } from '../../settings';
 
-export const ImageBlock = (props) => <div>
-  <ul>
+export const ImageBlock = (props) => <ul>
     {
       props.images.map(image => <li key={image.id}>
           <Link to={`?image=${image.id}`}>
@@ -12,5 +11,4 @@ export const ImageBlock = (props) => <div>
           </Link>
         </li>)
     }
-  </ul>
-</div>;
+  </ul>;
