@@ -8,24 +8,24 @@ import { getUsers, getAlbums, getPhotos } from '../apis';
 import { imageVendor } from '../settings';
 import { getUsers } from '../apis';
 import { imageVendor } from '../settings';
+import { ImageBlock } from '../components/ImageBlock';
 
 export class AlbumPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       albumId: this.props.routes.match.params[0],
-      uid: 0,
       album: {},
       images: []
     }
 
-    getAlbums(this.state.albumId).then(album => {
+    getAlbums(this.state.albumId)
+    .then(album => {
       this.setState({album: album[0]});
-      this.props.globalState.users.forEach(user => {
-        if (user.id == album[0].uid) {
-          this.setState({uid: user.id});
-        }
-      });
+      getPhotos(album[0].uid)
+      .then(images => {
+        this.setState({images: images});
+      })
     });
   }
 
@@ -33,9 +33,7 @@ export class AlbumPage extends Component {
     return (
       <div>
         <Link to={`/id${this.state.uid}`}>Назад</Link>
-        {/* {
-          this.props.globalState.users.length ? this.props.globalState.users[this.props.routes.match.params[0]-1].name : "..."
-        } */}
+        <ImageBlock images={this.state.images} />
       </div>
     );
   }
