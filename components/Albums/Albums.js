@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { imageEmpty } from '../../settings';
 import './style.scss';
 
 export const Albums = ({albums}) => <ul>
@@ -15,7 +16,7 @@ export const Albums = ({albums}) => <ul>
             </Link>
           ) : (
             <span>
-              <p><img src={album.cover} /></p>
+              <p><img src={imageEmpty} /></p>
               <figcaption>{album.name} ({album.count})</figcaption>
             </span>
           )
