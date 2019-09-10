@@ -14,12 +14,16 @@ export class AlbumsPage extends Component {
     this.state = {
       albums: []
     }
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
 
     if (!this.state.albums.length) {
-      getAlbums(this.props.routeLocation.match.params[0]).then(albums => {
+      this._isMounted && getAlbums(this.props.routeLocation.match.params[0]).then(albums => {
         this.setState({albums: albums});
         this.state.albums.forEach((album, i) => {
-          getPhotos(album.uid, {
+          this._isMounted && getPhotos(album.uid, {
             limit: 1,
             page: album.count
           }).then(image => {
@@ -30,12 +34,7 @@ export class AlbumsPage extends Component {
           });
         });
       });
-    }
-  }
-
-  componentDidMount() {
-    this._isMounted = true;
-    
+    }    
   }
 
   componentWillUnmount() {
