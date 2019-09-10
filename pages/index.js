@@ -6,7 +6,7 @@ import { UsersPage } from './users';
 import { AlbumsPage } from './albums';
 import { AlbumPage } from './album';
 import { getUsers } from '../apis';
-import './style.css';
+import './style.scss';
 import { addUsersAction } from '../actions';
 
 export class App extends Component {
