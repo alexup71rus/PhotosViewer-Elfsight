@@ -7,7 +7,6 @@ import { Albums } from '../components/Albums';
 import { getUsers, getAlbums, getPhotos } from '../apis';
 import { imageVendor } from '../settings';
 import { getUsers } from '../apis';
-import { imageVendor } from '../settings';
 import { ImageBlock } from '../components/ImageBlock';
 
 export class AlbumPage extends Component {
