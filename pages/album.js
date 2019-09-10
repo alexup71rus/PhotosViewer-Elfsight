@@ -16,7 +16,7 @@ export class AlbumPage extends Component {
     this.state = {
       albumId: this.props.routeLocation.match.params[0],
       album: {},
-      popupImage: 0,
+      popupImageId: 0,
       images: []
     }
 
@@ -30,8 +30,13 @@ export class AlbumPage extends Component {
     });
 
     document.onkeyup = function (e) {
+      console.log(e.key, e.code);
       if (e.key == "Escape" || e.code == "Escape") {
         self.props.routeLocation.history.push('?');
+      } else if (e.key === 'ArrowRight' && e.code === 'ArrowRight') {
+
+      } else if (e.key === 'ArrowLeft' && e.code === 'ArrowLeft') {
+
       }
     }
   }
@@ -39,10 +44,10 @@ export class AlbumPage extends Component {
   componentDidUpdate() {
     if (this.props.routeLocation.location.search) {
       const chunk = this.props.routeLocation.location.search.match(/\image=(\d)/);
-      if (this.state.popupImage === 0 && chunk[0] && chunk[1] > 0) {
-        this.setState({popupImage: chunk[1]});
-      } else if (!chunk && this.state.popupImage !== 0) {
-        this.setState({popupImage: 0});
+      if (chunk[0] && chunk[1] > 0 && (this.state.popupImageId === 0 || this.state.popupImageId !== chunk[1])) {
+        this.setState({popupImageId: chunk[1]});
+      } else if (!chunk && this.state.popupImageId !== 0) {
+        this.setState({popupImageId: 0});
       }
     }
   }
@@ -51,10 +56,10 @@ export class AlbumPage extends Component {
     return (
       <div>
         {
-          this.props.routeLocation.location.search && this.state.popupImage > 0 ?
+          this.props.routeLocation.location.search && this.state.popupImageId > 0 ?
             <Popup
               image={this.state.images.filter(image => {
-                if (image.id === +this.state.popupImage) {
+                if (image.id === +this.state.popupImageId) {
                   return image;
                 }
               })}
@@ -63,6 +68,7 @@ export class AlbumPage extends Component {
             null
         }
         <Link to={this.state.album.uid ? `/id${this.state.album.uid}` : '/'}>Назад</Link>
+        <h1>Album {this.state.album.name}</h1>
         <ImageBlock images={this.state.images} />
       </div>
     );
