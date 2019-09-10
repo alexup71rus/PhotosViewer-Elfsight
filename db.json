@@ -11,6 +11,12 @@
       "name": "Food",
       "count": 2,
       "uid": 2
+    },
+    {
+      "id": 2,
+      "name": "Autumn",
+      "count": 0,
+      "uid": 2
     }
   ],
   "photos": [
