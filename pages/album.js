@@ -22,7 +22,7 @@ export class AlbumPage extends Component {
     getAlbums(this.state.albumId)
     .then(album => {
       this.setState({album: album[0]});
-      getPhotos(album[0].uid)
+      getPhotos(album[0].uid, {album_id: this.state.albumId})
       .then(images => {
         this.setState({images: images});
       })
@@ -32,7 +32,7 @@ export class AlbumPage extends Component {
   render() {
     return (
       <div>
-        <Link to={`/id${this.state.uid}`}>Назад</Link>
+        <Link to={this.state.album.uid ? `/id${this.state.album.uid}` : '/'}>Назад</Link>
         <ImageBlock images={this.state.images} />
       </div>
     );
