@@ -29,7 +29,9 @@ export class AlbumPage extends Component {
         this.setState({images: images});
       });
     });
+  }
 
+  componentDidUpdate() {
     if (this.props.routes.location.search) {
       const chunk = this.props.routes.location.search.match(/\image=(\d)/);
       if (chunk[0] && chunk[1] > 0) {
