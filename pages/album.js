@@ -63,6 +63,10 @@ export class AlbumPage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    
+  }
+
   render() {
     return (
       <div>

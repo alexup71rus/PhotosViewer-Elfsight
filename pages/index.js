@@ -20,6 +20,10 @@ export class App extends Component {
     }
   }
 
+  componentWillUnmount() {
+    
+  }
+
   render() {
     return (
       <div>
