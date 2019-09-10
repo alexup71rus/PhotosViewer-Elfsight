@@ -10,6 +10,7 @@ import { imageVendor } from '../settings';
 export class AlbumsPage extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       albums: []
     }

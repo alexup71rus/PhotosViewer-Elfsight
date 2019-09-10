@@ -12,16 +12,21 @@ import { addUsersAction } from '../actions';
 export class App extends Component {
   constructor(props) {
     super(props);
-
-    if (props.globalState.users.length === 0) {
+    this._isMounted = false;
+    if (this.props.globalState.users.length === 0) {
       getUsers().then(users => {
         props.addUsersAction(users);
       });
     }
   }
 
-  componentWillUnmount() {
+  componentDidMount() {
+    this._isMounted = true;
     
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
