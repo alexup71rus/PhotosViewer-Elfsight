@@ -7,10 +7,19 @@ export const Albums = ({albums}) => <ul>
     albums.map(album => {
       return <li key={album.id}>
         <figure className='album-block'>
-          <Link to={`/album${album.id}`} >
-            <p><img src={album.cover} /></p>
-            <figcaption>{album.name} ({album.count})</figcaption>
-          </Link>
+        {
+          album.count ? (
+            <Link to={`/album${album.id}`} >
+              <p><img src={album.cover} /></p>
+              <figcaption>{album.name} ({album.count})</figcaption>
+            </Link>
+          ) : (
+            <span>
+              <p><img src={album.cover} /></p>
+              <figcaption>{album.name} ({album.count})</figcaption>
+            </span>
+          )
+        }
         </figure>
       </li>;
     })
